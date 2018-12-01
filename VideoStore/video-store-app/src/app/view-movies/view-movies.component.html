@@ -1,0 +1,32 @@
+<br>
+<h1>Videos</h1>
+<br>
+<input [(ngModel)]="searchInput" class="form-control" type="text" placeholder="Search" aria-label="Search">
+<br>
+<br>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Run Time</th>
+      <th scope="col">Genre</th>
+      <th scope="col">Rating</th>
+      <th scope="col">Director</th>
+      <th scope="col">Status</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor='let movie of getMovies'>
+        <td scope="row">{{movie.Title}}</td>
+        <td>{{movie.RunTime}}</td>
+        <td>{{movie.Gen}}</td>
+        <td>{{movie.Rating}}</td>
+        <td>{{movie.Director}}</td>
+        <td>{{movie.Status}}</td>
+        <td><button type="button" class="btn btn-primary btn-sm" routerLink="/details/{{movie.Title}}">Reserve</button></td>
+      </tr>
+
+</table>
+
+
+
