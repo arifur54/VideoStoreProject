@@ -1,0 +1,53 @@
+<br>
+<div class="row">
+  <div class="col-sm-4">
+    <h1>Welcome</h1>
+  </div>
+  <div class="col-sm-6"></div>
+  <div class="col-sm-2">
+    <button type="button" class="btn btn-warning btn-lg">Log Out</button>
+  </div>
+</div>
+<br>
+<div >
+  <div class="row">
+    <div class="col-sm-6">
+        <input [(ngModel)]="searchInput" class="form-control" type="text" placeholder="Search" aria-label="Search">
+    </div>
+    <!-- <div class="col-sm-2">
+      <button type="button" class="btn btn-primary btn-md btn-block btn pull-right">Add Movie</button>
+    </div> -->
+    <div class="col-sm-3"></div>
+    <div class="col-sm-2">
+        <button type="button" class="btn btn-primary btn-md btn pull-right" routerLink="/add-movie">Add Movie</button>
+    </div>
+    <div class="col-sm-1"></div>
+  </div>
+</div>
+<br>
+
+<br>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Run Time</th>
+      <th scope="col">Genre</th>
+      <th scope="col">Rating</th>
+      <th scope="col">Director</th>
+      <th scope="col">Status</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor='let movie of getMovies'>
+        <td scope="row">{{movie.Title}}</td>
+        <td>{{movie.RunTime}}</td>
+        <td>{{movie.Gen}}</td>
+        <td>{{movie.Rating}}</td>
+        <td>{{movie.Director}}</td>
+        <td>{{movie.Status}}</td>
+        <td><button type="button" class="btn btn-primary btn-sm" ><i class="material-icons">update</i></button></td>
+        <td><button type="button" class="btn btn-primary btn-sm" ><i class="material-icons">delete_forever</i></button></td>
+      </tr>
+
+</table>

@@ -9,6 +9,8 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ViewDetailsComponent } from './view-details/view-details.component';
+import { AdminHomeComponent } from './admin-home/admin-home.component';
+import { AddMovieComponent } from './add-movie/add-movie.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { ViewDetailsComponent } from './view-details/view-details.component';
     SidebarComponent,
     ViewMoviesComponent,
     AdminLoginComponent,
-    ViewDetailsComponent
+    ViewDetailsComponent,
+    AdminHomeComponent,
+    AddMovieComponent
   ],
   imports: [
     BrowserModule,
