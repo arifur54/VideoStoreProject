@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-login',
@@ -7,9 +9,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminLoginComponent implements OnInit {
 
-  constructor() { }
+  adminUserData = {}
+  constructor(private adminData: DataService, private router: Router) { }
 
   ngOnInit() {
   }
+
+  logInAdmin(){
+    this.adminData.adminLogin(this.adminUserData)
+    .subscribe(
+      res =>{
+        console.log(res)
+        this.router.navigate(['/admin-home'])
+      },
+      err => {
+        console.log(err)
+      }
+    )
+  }
+
+ 
 
 }

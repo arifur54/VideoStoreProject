@@ -25,7 +25,7 @@ router.post('/adduser',(req,res,next)=>{
 });
 
 // Get user
-router.get('/getuser', (req, res, next)=>{
+router.post('/getuser', (req, res, next)=>{
     User.find((err, user)=>{
         if(err){
             res.json({

@@ -17,17 +17,26 @@ export class DataService {
   constructor(private http: HttpClient) {
    }
 
-  private globalMovies = new BehaviorSubject<Object>([])
+
 
   getMovies(): Observable<Movies[]>{
-    return this.http.get<Movies[]>('http://localhost:3000/api/getmovies');
-    // .pipe(
-    //   catchError(this.errorHandler));
+    return this.http.get<Movies[]>('http://localhost:3000/api/getmovies')
+    .pipe(
+      catchError(this.errorHandler));
   }
   
 
   addAMovie(newMovie){
-    return this.http.post('http://localhost:3000/api/addmovie', newMovie);
+    return this.http.post('http://localhost:3000/api/addmovie', newMovie)
+    .pipe(
+      catchError(this.errorHandler)
+    );
+  }
+
+  adminLogin(user){
+    return this.http.post<any>('http://localhost:3000/admin/getuser', user).pipe(
+      catchError(this.errorHandler)
+    );
   }
 
   
