@@ -38,6 +38,7 @@ export class AdminHomeComponent implements OnInit {
     getallData(){
       this.data.getMovies().subscribe(
         data => {
+          this.movies$ = []
           this.movies$.push(...data)
           // for (let item of data) {
           //   this.movies$.push(item)
@@ -50,9 +51,9 @@ export class AdminHomeComponent implements OnInit {
 
   deleteMovie(movId){
     let vedios = this.movies$;
-      this.data.deleteVideo(movId).subscribe(
-        
-      ) 
+      this.data.deleteVideo(movId).toPromise().then((res) => {
+        this.getallData();
+      })
       return this.movies$;
     }
 
