@@ -51,7 +51,7 @@ export class AdminHomeComponent implements OnInit {
 
   deleteMovie(movId){
     let vedios = this.movies$;
-      this.data.deleteVideo(movId).toPromise().then((res) => {
+      this.data.deleteVideo(movId).subscribe((data) => {
         this.getallData();
       })
       return this.movies$;
