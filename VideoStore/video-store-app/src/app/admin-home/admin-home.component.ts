@@ -32,7 +32,7 @@ export class AdminHomeComponent implements OnInit {
     //   }
     //  )
       this.getallData();
-      this.fetchData();
+      
     }
     
     getallData(){
@@ -48,20 +48,12 @@ export class AdminHomeComponent implements OnInit {
 
 
 
-    deleteMovie(movId){
+  deleteMovie(movId){
+    let vedios = this.movies$;
       this.data.deleteVideo(movId).subscribe(
-        data => {
-          this.movies$ 
-        }
+        
       ) 
       return this.movies$;
     }
 
-    fetchData(){
-      this.data.getMovies().subscribe(
-        data =>{
-          this.movies$ = data;
-        }
-      )
-    }
 }
