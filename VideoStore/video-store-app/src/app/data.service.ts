@@ -39,6 +39,12 @@ export class DataService {
     );
   }
 
+  deleteVideo(vidId){
+    return this.http.delete('http://localhost:3000/api/deletemovie/'+vidId).pipe(
+      catchError(this.errorHandler)
+    );
+  }
+
   
 
   

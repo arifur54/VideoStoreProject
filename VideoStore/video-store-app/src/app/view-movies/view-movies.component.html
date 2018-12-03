@@ -23,7 +23,7 @@
         <td>{{movie.Rating}}</td>
         <td>{{movie.Director}}</td>
         <td>{{movie.Status}}</td>
-        <td><button type="button" class="btn btn-primary btn-sm" routerLink="/details/{{movie._id}}">Reserve</button></td>
+        <td><button type="button" class="btn btn-primary btn-sm" (click)="onSelect(movie._id)">Reserve</button></td>
       </tr>
 
 </table>

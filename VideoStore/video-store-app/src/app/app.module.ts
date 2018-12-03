@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { ViewDetailsComponent } from './view-details/view-details.component';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { AddMovieComponent } from './add-movie/add-movie.component';
+import { UpdateMovieComponent } from './update-movie/update-movie.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { AddMovieComponent } from './add-movie/add-movie.component';
     AdminLoginComponent,
     ViewDetailsComponent,
     AdminHomeComponent,
-    AddMovieComponent
+    AddMovieComponent,
+    UpdateMovieComponent
   ],
   imports: [
     BrowserModule,

@@ -1,14 +1,14 @@
-<h1>{{movies$.Title}}Hello</h1>
+<h1>{{Movie.title}}Hello</h1>
 <div class="container">
-<ul>
+<!-- <ul>
   <li><strong>Title:</strong> {{ user$.username }} </li>
   <li><strong>Run Time:</strong> {{ user$.email }} </li>
   <li><strong>Genre:</strong> {{ user$.phone }} </li>
   <li><strong>Rating:</strong> {{ user$.phone }} </li>
   <li><strong>Director:</strong> {{ user$.phone }} </li>
-  <li><strong>Status:</strong> {{ user$.phone }} </li>
+  <li><strong>Status:</strong> {{ user$.phone }} </li> -->
 
-</ul>
+<!-- </ul> -->
 <br>
   <div class="row">
     <div class="col-sm-4">
@@ -16,7 +16,7 @@
     </div>
     <div class="col-sm-4"></div>
     <div class="col-sm-4">
-        <button type="button" class="btn btn-success btn-block btn-lg" routerLink="">Reserve</button>
+        <button type="button" class="btn btn-success btn-block btn-lg" (click)=reserve()>Reserve</button>
     </div>
   </div>
 </div>

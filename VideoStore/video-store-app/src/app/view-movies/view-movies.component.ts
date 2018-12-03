@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter } from '@angular/core';
 import { DataService } from '../data.service';
-import { ActivatedRoute } from '@angular/router';
-// import { Movies } from '../movies';
+import { Movies } from '../movies';
 
 @Component({
   selector: 'app-view-movies',
@@ -33,7 +32,8 @@ export class ViewMoviesComponent implements OnInit {
 
     this.data.getMovies().subscribe(
       data => {
-        this.movies$.push(...data)
+        this.movies$ = data
+        // this.movies$.push(...data)
         // for (let item of data) {
         //   this.movies$.push(item)
         // }
