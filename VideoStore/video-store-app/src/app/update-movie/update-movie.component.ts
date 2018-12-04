@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../data.service';
+import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-update-movie',
@@ -7,9 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UpdateMovieComponent implements OnInit {
 
-  constructor() { }
+  updateMovieData = {}
+  constructor(private updateMov: DataService, private _router: Router, private http: HttpClient) { }
+
+  // updateMovie(){
+  //   this.updateMov.updateVideo(this.updateMovieData)
+  // }
 
   ngOnInit() {
+  }
+
+  updateMovie(updateMovieData){
+  
   }
 
 }

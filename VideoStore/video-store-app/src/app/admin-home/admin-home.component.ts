@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { ActivatedRoute } from '@angular/router';
-import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-admin-home',
@@ -20,7 +19,7 @@ export class AdminHomeComponent implements OnInit {
     return this.movies$;
   }
 
-  constructor(private data: DataService) { }
+  constructor(private data: DataService, private _router: ActivatedRoute) { }
 
   ngOnInit() {
     // this.data.getMovies().subscribe(
@@ -45,13 +44,15 @@ export class AdminHomeComponent implements OnInit {
           // }
         }
        )
+    };
+
+    updateMovie(){
+      
     }
 
-
-
   deleteMovie(movId){
-    let vedios = this.movies$;
-      this.data.deleteVideo(movId).subscribe((data) => {
+      this.data.deleteVideo(movId).subscribe(
+        () => {
         this.getallData();
       })
       return this.movies$;

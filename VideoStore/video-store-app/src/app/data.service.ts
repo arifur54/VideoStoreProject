@@ -45,6 +45,10 @@ export class DataService {
     );
   }
 
+  // updateVideo(videos) {
+  //   return this.http.put('http://localhost:3000/api/updatemovie/' + vidId, Movies)
+  // }
+
   
 
   

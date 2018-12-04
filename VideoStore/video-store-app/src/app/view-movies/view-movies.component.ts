@@ -23,13 +23,7 @@ export class ViewMoviesComponent implements OnInit {
 
   constructor(private data: DataService) { }
   ngOnInit() {
-    // this.data.getMovies().toPromise().then((res) => {
-    //   // console.log(res.movies)
-    //   this.movies$.push(...res.movies)
-    // }).catch((err)=>{
-    //   console.log(err)
-    // })
-
+  
     this.data.getMovies().subscribe(
       data => {
         this.movies$ = data

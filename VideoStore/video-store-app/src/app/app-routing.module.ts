@@ -5,6 +5,7 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { ViewDetailsComponent } from './view-details/view-details.component';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { AddMovieComponent } from './add-movie/add-movie.component';
+import { UpdateMovieComponent } from './update-movie/update-movie.component';
 
 
 const routes: Routes = [
@@ -36,6 +37,10 @@ const routes: Routes = [
   {
     path: 'delete/:id',
     component: AdminHomeComponent
+  },
+  {
+    path: 'update/:id',
+    component: UpdateMovieComponent
   }
   
 ];
