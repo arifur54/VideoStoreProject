@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./add-movie.component.scss']
 })
 export class AddMovieComponent implements OnInit {
+  fieldval=false;
 
   addMovieData = {}
   constructor(private addmov: DataService, private _router: Router) { }
@@ -15,7 +16,10 @@ export class AddMovieComponent implements OnInit {
   ngOnInit() {
   }
 
+  //t:HTMLInputElement
+  // t.value
   addMovie(){
+    console.log()
     this.addmov.addAMovie(this.addMovieData)
     .subscribe(
       res => {

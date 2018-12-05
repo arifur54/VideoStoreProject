@@ -23,7 +23,7 @@ const routes: Routes = [
     component:AdminLoginComponent
   },
   {
-    path: 'details/:_id',
+    path: 'details/:id',
     component: ViewDetailsComponent
   },
   {

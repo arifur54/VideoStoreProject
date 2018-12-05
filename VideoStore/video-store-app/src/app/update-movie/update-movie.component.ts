@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
-import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Movies } from '../movies';
+
 
 @Component({
   selector: 'app-update-movie',
@@ -10,18 +11,39 @@ import { HttpClient } from '@angular/common/http';
 })
 export class UpdateMovieComponent implements OnInit {
 
-  updateMovieData = {}
-  constructor(private updateMov: DataService, private _router: Router, private http: HttpClient) { }
+  private updateMovieData = {};
+  private  id: String;
+  
+  constructor(private data: DataService, private _router: ActivatedRoute, private router: Router) { }
 
   // updateMovie(){
   //   this.updateMov.updateVideo(this.updateMovieData)
   // }
 
   ngOnInit() {
+    this.getMovieData()
   }
 
-  updateMovie(updateMovieData){
-  
+  getMovieData(){
+    this.id = this._router.snapshot.paramMap.get('id');
+    this.data.getAMovie(this.id).subscribe(
+      data =>{
+        this.updateMovieData = data;
+        console.log(this.updateMovieData)
+      }
+    )
+  }
+
+  updateMovie(){
+    this.data.updateVideo(this.updateMovieData).subscribe(
+      res => {
+        console.log(res)
+      },
+      err =>{
+        console.log(err)
+        this.router.navigate(['/admin-home'])
+      }
+    )
   }
 
 }

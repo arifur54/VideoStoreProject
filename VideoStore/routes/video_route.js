@@ -42,13 +42,13 @@ router.get('/getmovies',(req, res, next) => {
 
 // Get Specific Movie
 router.get('/getamovie/:id', (req, res, next) =>{
-    Movies.findById(req.params.id, (err, result) => {
+    Movies.findById({_id: req.params.id}, (err, result) => {
         if(err){
             res.json({
                 msg: "Failed to Retrive " + result
             })
         }else{
-            res.json({result})
+            res.json(result)
         }
     });
 });
@@ -87,23 +87,21 @@ router.put('/updatemovie/:id',(req, res, next)=>{
     });
 })
 
-// router.put('/updatemovie/:id',(req, res) =>{
-//     Movies.update({_id: req.params.id},{
-//         Title: req.body.Title,
-//         RunTime: req.body.RunTime,
-//         Gen: req.body.Gen,
-//         Rating: req.body.Rating,
-//         Director: req.body.Director,
-//         Status: req.body.Status
-//     },
-//     function(err, updateMov){
-//         if(err){
-//             res.json("Cannot Update Movie")
-//         }else{
-//             res.json(updateMov + "-> Updated")
-//         }
-//     })
-// })
+router.put('/reserve/:id', (req, res, next) => {
+    Movies.findByIdAndUpdate(req.params.id,{
+        $set:{
+            Status: req.body.Status = "Unavailable"
+        }
+    },{new: true},
+    function(err, updatedStatus){
+        if(err){
+            res.send("Error Updating The Status")
+        }else{
+            res.send(updatedStatus + "-> Updated")
+            console.log(updatedStatus)
+        }
+    });
+});
 
 
 

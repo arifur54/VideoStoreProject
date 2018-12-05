@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Movies } from './movies';
 import {throwError as observableThrowError, Observable, from} from 'rxjs';
 import {catchError} from 'rxjs/operators';
-import { BehaviorSubject } from 'rxjs';
+import { ViewDetailsComponent } from './view-details/view-details.component';
+
 
 
 
@@ -12,6 +13,8 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class DataService {
+
+
 
   // Dependecy injection
   constructor(private http: HttpClient) {
@@ -24,6 +27,11 @@ export class DataService {
     .pipe(
       catchError(this.errorHandler));
   }
+
+  getAMovie(movId){
+    return this.http.get('http://localhost:3000/api/getamovie/'+ movId).pipe(
+      catchError(this.errorHandler))
+  }
   
 
   addAMovie(newMovie){
@@ -33,8 +41,15 @@ export class DataService {
     );
   }
 
-  adminLogin(user){
-    return this.http.post<any>('http://localhost:3000/admin/getuser', user).pipe(
+  adminLogin(username: String, password: String){
+    var admin = {
+      user_name: username,
+      password: password
+    }
+    var head = {
+      headers: new HttpHeaders({'Content-Type' : 'application/json'})
+    }
+    return this.http.post<any>('http://localhost:3000/admin/getuser', admin, head).pipe(
       catchError(this.errorHandler)
     );
   }
@@ -45,14 +60,19 @@ export class DataService {
     );
   }
 
-  // updateVideo(videos) {
-  //   return this.http.put('http://localhost:3000/api/updatemovie/' + vidId, Movies)
-  // }
+  updateVideo(Movies) {
+    var headers = new HttpHeaders();
+    headers.append('Content-Type', 'application.json');
+    return this.http.put('http://localhost:3000/api/updatemovie/' + Movies._id, Movies,{headers:headers}).pipe(
+      catchError(this.errorHandler)
+    );
+  }
 
-  
-
-  
-
+  updateStatus(Movies){
+    return this.http.put('http://localhost:3000/api/reserve/' + Movies._id, Movies).pipe(
+      catchError(this.errorHandler)
+    );
+  }
 
   errorHandler(error: HttpErrorResponse){
     // return (error.message || "Server Error");

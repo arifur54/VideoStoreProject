@@ -9,14 +9,15 @@ import { Router } from '@angular/router';
 })
 export class AdminLoginComponent implements OnInit {
 
-  adminUserData = {}
+  username = ""
+  password = ""
   constructor(private adminData: DataService, private router: Router) { }
 
   ngOnInit() {
   }
 
   logInAdmin(){
-    this.adminData.adminLogin(this.adminUserData)
+    this.adminData.adminLogin(this.username, this.password)
     .subscribe(
       res =>{
         console.log(res)

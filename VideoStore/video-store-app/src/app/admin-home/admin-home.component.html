@@ -14,9 +14,6 @@
     <div class="col-sm-6">
         <input [(ngModel)]="searchInput" class="form-control" type="text" placeholder="Search" aria-label="Search">
     </div>
-    <!-- <div class="col-sm-2">
-      <button type="button" class="btn btn-primary btn-md btn-block btn pull-right">Add Movie</button>
-    </div> -->
     <div class="col-sm-3"></div>
     <div class="col-sm-2">
         <button type="button" class="btn btn-primary btn-md btn pull-right" routerLink="/add-movie">Add Movie</button>
@@ -47,7 +44,7 @@
         <td>{{movie.Director}}</td>
         <td>{{movie.Status}}</td>
         <td><button type="button" class="btn btn-primary btn-sm" ><i class="material-icons" routerLink= "/update/{{movie._id}}">update</i></button></td>
-        <td><button type="button" class="btn btn-primary btn-sm" ><i class="material-icons" (click)="deleteMovie()">delete_forever</i></button></td>
+        <td><button type="button" class="btn btn-danger btn-sm" ><i class="material-icons" (click)="deleteMovie(movie._id)">delete_forever</i></button></td>
       </tr>
 
 </table>

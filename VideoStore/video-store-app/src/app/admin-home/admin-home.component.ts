@@ -22,33 +22,20 @@ export class AdminHomeComponent implements OnInit {
   constructor(private data: DataService, private _router: ActivatedRoute) { }
 
   ngOnInit() {
-    // this.data.getMovies().subscribe(
-    //   data => {
-    //     this.movies$.push(...data)
-    //     // for (let item of data) {
-    //     //   this.movies$.push(item)
-    //     // }
-    //   }
-    //  )
       this.getallData();
-      
     }
     
-    getallData(){
-      this.data.getMovies().subscribe(
-        data => {
-          this.movies$ = []
-          this.movies$.push(...data)
+  getallData(){
+     this.data.getMovies().subscribe(
+       data => {
+        this.movies$ = []
+        this.movies$.push(...data)
           // for (let item of data) {
           //   this.movies$.push(item)
           // }
         }
        )
     };
-
-    updateMovie(){
-      
-    }
 
   deleteMovie(movId){
       this.data.deleteVideo(movId).subscribe(
