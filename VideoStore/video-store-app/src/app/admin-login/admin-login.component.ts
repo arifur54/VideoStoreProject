@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { Router } from '@angular/router';
+import { AdminService } from '../admin.service';
+import { AdminUser } from '../adminuser';
+import { resolve } from 'url';
 
 @Component({
   selector: 'app-admin-login',
@@ -9,24 +12,44 @@ import { Router } from '@angular/router';
 })
 export class AdminLoginComponent implements OnInit {
 
+  userData = {};
+  // admin: AdminUser[];
+
   username = ""
   password = ""
-  constructor(private adminData: DataService, private router: Router) { }
+  errorMessage:String;
+  constructor(private data: DataService, private adminData: AdminService, private router: Router) { }
 
   ngOnInit() {
+    this.getUserData()
   }
 
-  logInAdmin(){
-    this.adminData.adminLogin(this.username, this.password)
-    .subscribe(
-      res =>{
-        console.log(res)
-        this.router.navigate(['/admin-home'])
-      },
-      err => {
-        console.log(err)
+  public getUserData(): any{
+    return this.adminData.adminLogin(this.username,this.password).toPromise()
+  }
+
+  logInAdmin(usr, pass){
+    if(usr === "" || pass == "") {
+      this.errorMessage = "Username or Password Cannot be empty!"
+      return;
+    }
+    this.getUserData().then((res) => {
+      let adminData = res
+      for (const data of adminData) {
+        if (data.password == pass && data.user_name == usr) {
+          this.data.logUserIn(true).then((success) => {
+            this.router.navigate(['/admin-home'])
+          }).catch(error => { 
+            console.log(error)
+          })
+        } else {
+          this.errorMessage = "Username or Password is incorrect. Use username<admin>&& password<admin123>||password<admin1234>";
+        }
       }
-    )
+    }).catch((err) => {
+      console.log(err)
+    })
+        
   }
 
  

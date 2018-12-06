@@ -24,6 +24,13 @@ router.post('/adduser',(req,res,next)=>{
     });
 });
 
+
+//Get user by username and password
+// router.post('/getuser', (req,res,next)=>{
+//     User.findOne
+// })
+
+
 // Get user
 router.post('/getuser', (req, res, next)=>{
     User.find((err, user)=>{
@@ -32,7 +39,7 @@ router.post('/getuser', (req, res, next)=>{
                 msg: "User Not Found"
             })
         }else{
-            res.json({user});
+            res.json(user);
         }
     })
 })

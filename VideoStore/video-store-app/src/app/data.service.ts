@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Movies } from './movies';
-import {throwError as observableThrowError, Observable, from} from 'rxjs';
+import {throwError as observableThrowError, Observable} from  'rxjs';
 import {catchError} from 'rxjs/operators';
-import { ViewDetailsComponent } from './view-details/view-details.component';
 
 
 
@@ -41,17 +40,15 @@ export class DataService {
     );
   }
 
-  adminLogin(username: String, password: String){
-    var admin = {
-      user_name: username,
-      password: password
-    }
-    var head = {
-      headers: new HttpHeaders({'Content-Type' : 'application/json'})
-    }
-    return this.http.post<any>('http://localhost:3000/admin/getuser', admin, head).pipe(
-      catchError(this.errorHandler)
-    );
+  public isLoggedIn: boolean
+  get logInStatus () {
+    return this.isLoggedIn;
+  }
+  logUserIn (status) {
+    return new Promise((resolve, reject) => {
+      this.isLoggedIn = status
+      resolve(this.isLoggedIn)
+    })
   }
 
   deleteVideo(vidId){

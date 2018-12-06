@@ -7,6 +7,10 @@
   <li><strong>Rating:</strong> {{ movies$.Rating }} </li>
   <li><strong>Director:</strong> {{ movies$.Director }} </li>
   <li><strong>Status:</strong> {{ movies$.Status }} </li>
+  <li> <strong>Customer Name:</strong> <select class="form-control">
+    <option *ngFor="let customer of customer$">{{ customer.FirstName }} {{customer.LastName}}</option>
+  </select></li>
+
 
 </ul>
 <br>

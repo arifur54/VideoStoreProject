@@ -12,6 +12,10 @@ import { ViewDetailsComponent } from './view-details/view-details.component';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { AddMovieComponent } from './add-movie/add-movie.component';
 import { UpdateMovieComponent } from './update-movie/update-movie.component';
+import { ViewCustomersComponent } from './view-customers/view-customers.component';
+import { AddCustomerComponent } from './add-customer/add-customer.component';
+import { UpdateCustomerComponent } from './update-customer/update-customer.component';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +26,10 @@ import { UpdateMovieComponent } from './update-movie/update-movie.component';
     ViewDetailsComponent,
     AdminHomeComponent,
     AddMovieComponent,
-    UpdateMovieComponent
+    UpdateMovieComponent,
+    ViewCustomersComponent,
+    AddCustomerComponent,
+    UpdateCustomerComponent
   ],
   imports: [
     BrowserModule,

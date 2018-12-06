@@ -24,6 +24,7 @@ export class AddMovieComponent implements OnInit {
     .subscribe(
       res => {
         console.log(res)
+        window.alert("Your Movie has been Added")
         this._router.navigate(['/admin-home']);
       },
       err =>{

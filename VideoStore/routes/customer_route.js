@@ -24,9 +24,19 @@ router.post('/addcustomer',(req,res,next)=>{
                 msg: newCustomer.FirstName + " -> Added"
             })
         }
-    }).catch(next);
+    });
 });
 
+// Delete a Customer
+router.delete('/deletecustomer/:id',(req, res, next)=>{
+    Customer.remove({_id: req.params.id}, function(err, result){
+        if(err){
+            res.json(err);
+        }else{
+            res.json(result);
+        }
+    });
+});
 
 // Get Data
 router.get('/getcustomers',(req, res, next) => {
@@ -36,9 +46,34 @@ router.get('/getcustomers',(req, res, next) => {
                 msg: err + "Failed to retrive Movies"
             })
         }else{
-            res.json({customers})
+            res.json(customers)
         }
     }).catch(next);
 });
+
+// Update a movie
+router.put('/updatecustomer/:id',(req, res, next)=>{
+    Customer.findByIdAndUpdate(req.params.id, {
+        $set: {
+            FirstName: req.body.FirstName,
+            LastName: req.body.LastName,
+            Address: req.body.Address,
+            City: req.body.City,
+            PhoneNumber: req.body.PhoneNumber,
+            Status: req.body.Status
+        }
+    },
+    {new: true},
+    function(err, updatedCustomer){
+        if(err){
+            res.send("Error Updating the Movie")
+        }else{
+            res.send(updatedCustomer + "-> Updated")
+            console.log(updatedMovie)
+        }
+    });
+})
+
+
 
 module.exports = router;

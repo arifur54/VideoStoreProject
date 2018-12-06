@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { routerNgProbeToken } from '@angular/router/src/router_module';
 
 @Component({
   selector: 'app-admin-home',
@@ -19,11 +20,11 @@ export class AdminHomeComponent implements OnInit {
     return this.movies$;
   }
 
-  constructor(private data: DataService, private _router: ActivatedRoute) { }
+  constructor(private data: DataService, private _router: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-      this.getallData();
-    }
+   this.getallData();
+  }
     
   getallData(){
      this.data.getMovies().subscribe(
@@ -37,7 +38,16 @@ export class AdminHomeComponent implements OnInit {
        )
     };
 
+  logOut(){
+    if(confirm("Are you sure")){
+      this.data.logUserIn(false).then((success) => {
+        this.router.navigate(['/admin'])
+      })
+    }
+  }
+
   deleteMovie(movId){
+    if(confirm("Are you Sure you want to delete"))
       this.data.deleteVideo(movId).subscribe(
         () => {
         this.getallData();

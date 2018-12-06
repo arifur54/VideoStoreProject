@@ -41,6 +41,7 @@ export class UpdateMovieComponent implements OnInit {
       },
       err =>{
         console.log(err)
+        window.alert("your movie has been Updated!")
         this.router.navigate(['/admin-home'])
       }
     )

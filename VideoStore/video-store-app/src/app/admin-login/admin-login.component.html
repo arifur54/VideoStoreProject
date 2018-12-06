@@ -7,11 +7,11 @@
       <form class="form-signin" #logInFrom="ngForm">
         <h1 class="h3 mb-3 font-weight-normal">Admin Log In</h1>
         <br>
-        <input type="text" [(ngModel)]="adminUserData.user_name" name="user_name" class="form-control" placeholder="Admin User Name" required autofocus>
+        <input type="text" class="form-control" placeholder="Admin User Name" #usr required autofocus>
         <br>
         <!-- <label for="inputPassword" 
         class="sr-only">Password</label> -->
-        <input type="password" [(ngModel)]="adminUserData.password" name="password" class="form-control" placeholder="Admin Password" required>
+        <input type="password"  class="form-control" placeholder="Admin Password" #pass required>
         <br>
         <div class="checkbox mb-3">
           <label>
@@ -19,7 +19,8 @@
           </label>
         </div>
         <br>
-        <button class="btn btn-lg btn-primary btn-block" type="submit" (click)=logInAdmin()>Sign in</button>
+        <button *ngIf="'#usr.vlaue==userData.user_name'||'#pass.value==userData.password'" class="btn btn-lg btn-primary btn-block" type="submit" (click)="logInAdmin(usr.value,pass.value)">Sign in</button>
+        <div *ngIf="errorMessage"><span style="color:red">*{{errorMessage}}</span></div>
       </form>
     </div>
     <div class="col-sm">

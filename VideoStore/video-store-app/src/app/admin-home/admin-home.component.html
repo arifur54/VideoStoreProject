@@ -1,27 +1,38 @@
 <br>
 <div class="row">
   <div class="col-sm-4">
-    <h1>Welcome</h1>
+    <h1>Admin Movies</h1>
   </div>
   <div class="col-sm-6"></div>
   <div class="col-sm-2">
-    <button type="button" class="btn btn-warning btn-lg">Log Out</button>
+    <button type="button" class="btn btn-danger btn-lg" (click)="logOut()" >Log Out</button>
   </div>
 </div>
 <br>
+
 <div >
   <div class="row">
-    <div class="col-sm-6">
+    <div class="col-sm-12">
         <input [(ngModel)]="searchInput" class="form-control" type="text" placeholder="Search" aria-label="Search">
     </div>
-    <div class="col-sm-3"></div>
-    <div class="col-sm-2">
-        <button type="button" class="btn btn-primary btn-md btn pull-right" routerLink="/add-movie">Add Movie</button>
-    </div>
-    <div class="col-sm-1"></div>
+  
   </div>
 </div>
 <br>
+<div class="row">
+  <div class="col-sm-3">
+    <button type="button" class="btn btn-info btn-block btn-md" routerLink="/view-customers">View Customer Details</button>
+  </div>
+  <div class="col-sm-3">
+    
+  </div>
+  <div class="col-sm-3">
+    
+  </div>
+  <div class="col-sm-3">
+    <button type="button" class="btn btn-primary btn-md btn-block btn pull-right" routerLink="/add-movie">Add Movie</button>
+  </div>
+</div>
 
 <br>
 <table class="table">
