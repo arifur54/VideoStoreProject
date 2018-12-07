@@ -76,15 +76,14 @@ router.put('/updatemovie/:id',(req, res, next)=>{
             Status: req.body.Status
         }
     },
-    {new: true},
-    function(err, updatedMovie){
-        if(err){
-            res.send("Error Updating the Movie")
-        }else{
-            res.send(updatedMovie + "-> Updated")
-            console.log(updatedMovie)
+    {new: true}
+    ).then(
+        result =>{
+            res.json(result)
         }
-    });
+    ).catch(err => {
+        res.json(err);
+    })
 })
 
 router.put('/reserve/:id', (req, res, next) => {
@@ -92,15 +91,14 @@ router.put('/reserve/:id', (req, res, next) => {
         $set:{
             Status: req.body.Status = "Unavailable"
         }
-    },{new: true},
-    function(err, updatedStatus){
-        if(err){
-            res.send("Error Updating The Status")
-        }else{
-            res.send(updatedStatus + "-> Updated")
-            console.log(updatedStatus)
+    },{new: true}
+    ).then(
+        result => {
+            res.json(result)
         }
-    });
+    ).catch(err => {
+        res.json(err)
+    })
 });
 
 

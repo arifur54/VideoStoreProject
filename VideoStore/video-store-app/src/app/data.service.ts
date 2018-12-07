@@ -59,8 +59,12 @@ export class DataService {
 
   updateVideo(Movies) {
     var headers = new HttpHeaders();
-    headers.append('Content-Type', 'application.json');
-    return this.http.put('http://localhost:3000/api/updatemovie/' + Movies._id, Movies,{headers:headers}).pipe(
+    headers.append('Content-Type', 'application/json');
+    return this.http.put('http://localhost:3000/api/updatemovie/' + Movies._id, Movies, {
+      headers: {
+        "Content-type" : "application/json"
+      }
+    }).pipe(
       catchError(this.errorHandler)
     );
   }

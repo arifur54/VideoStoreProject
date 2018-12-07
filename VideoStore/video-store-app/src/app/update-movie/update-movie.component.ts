@@ -37,12 +37,13 @@ export class UpdateMovieComponent implements OnInit {
   updateMovie(){
     this.data.updateVideo(this.updateMovieData).subscribe(
       res => {
+        if(res)
         console.log(res)
+        this.router.navigateByUrl('/admin-home');
       },
       err =>{
-        console.log(err)
-        window.alert("your movie has been Updated!")
-        this.router.navigate(['/admin-home'])
+        console.log(err);
+        this.router.navigateByUrl('/admin-home');
       }
     )
   }

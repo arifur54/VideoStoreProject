@@ -14,7 +14,7 @@ import { Customer } from '../customer';
 export class ViewDetailsComponent implements OnInit {
 
   private movies$ = {};
-  private customer$ = {};
+  private customer$ = [];
   private id: String;
   
   
@@ -30,7 +30,6 @@ export class ViewDetailsComponent implements OnInit {
     this.data.getAMovie(this.id).subscribe(
       data => {
         this.movies$ = data
-        console.log(this.movies$)
       }
     )
   }
@@ -49,12 +48,12 @@ export class ViewDetailsComponent implements OnInit {
     this.data.updateStatus(this.movies$).subscribe(
       res =>{
         console.log(res)
-        //this._router.navigate(['/videohome'])
+        this._router.navigate(['/videohome'])
       },
       err => {
         console.log(err)
         window.alert("Your Movie has been reserved")
-        this._router.navigate(['/videohome'])
+        // this._router.navigate(['/videohome'])
       }
     )
   }

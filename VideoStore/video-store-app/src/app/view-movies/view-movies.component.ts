@@ -10,23 +10,11 @@ import { Movies } from '../movies';
 export class ViewMoviesComponent implements OnInit {
 
   public movies$ = [];
-
-  //public movies: Movies[];
   public searchInput = "";
 
 
   constructor(private data: DataService) { }
   ngOnInit() {
-  
-    // this.data.getMovies().subscribe(
-    //   data => {
-    //     this.movies = data
-    //     // this.movies$.push(...data)
-    //     // for (let item of data) {
-    //     //   this.movies$.push(item)
-    //     // }
-    //   }
-    //  )
     this.getallVideos();
   }
 
@@ -40,13 +28,6 @@ export class ViewMoviesComponent implements OnInit {
         // }
       })
   }
-
-  // get getMovies() {
-  //   if (this.searchInput.length > 0) {
-  //     return this.movies$.filter(movie => movie.title.toLowerCase().includes(this.searchInput.toLowerCase()))
-  //   }
-  //   return this.movies$;
-  // }
 
   get getMovies(){
     if(this.searchInput.length > 0){

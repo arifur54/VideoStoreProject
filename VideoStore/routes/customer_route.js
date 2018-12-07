@@ -38,17 +38,30 @@ router.delete('/deletecustomer/:id',(req, res, next)=>{
     });
 });
 
+// Get Specific Custmoer
+router.get('/getacustomer/:id', (req, res, next) =>{
+    Customer.findById({_id: req.params.id}, (err, result) => {
+        if(err){
+            res.json({
+                msg: "Failed to Retrive " + err
+            })
+        }else{
+            res.json(result)
+        }
+    });
+});
+
 // Get Data
 router.get('/getcustomers',(req, res, next) => {
     Customer.find((err,customers)=>{
         if(err){
             res.json({
-                msg: err + "Failed to retrive Movies"
+                msg: err + "Failed to retrive Movies" 
             })
         }else{
             res.json(customers)
         }
-    }).catch(next);
+    });
 });
 
 // Update a movie
@@ -63,15 +76,15 @@ router.put('/updatecustomer/:id',(req, res, next)=>{
             Status: req.body.Status
         }
     },
-    {new: true},
-    function(err, updatedCustomer){
-        if(err){
-            res.send("Error Updating the Movie")
-        }else{
-            res.send(updatedCustomer + "-> Updated")
-            console.log(updatedMovie)
+    {new: true}
+    ).then(
+        result => {
+            res.json(result)
         }
-    });
+    ).catch(err => {
+        err.json(err)
+    })
+    
 })
 
 

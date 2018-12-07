@@ -24,10 +24,14 @@ export class CustomerService {
     return this.http.delete('http://localhost:3000/api/deletecustomer/'+cusId);
   }
 
+  getACustomer(custId){
+    return this.http.get('http://localhost:3000/api/getacustomer/'+ custId)
+  }
+
   updateCustomer(Customer) {
     var headers = new HttpHeaders();
     headers.append('Content-Type', 'application.json');
-    return this.http.put('http://localhost:3000/api/updatemovie/' + Customer._id, Customer,{headers:headers});
+    return this.http.put('http://localhost:3000/api/updatecustomer/' + Customer._id, Customer,{headers:headers});
   }
 
 }

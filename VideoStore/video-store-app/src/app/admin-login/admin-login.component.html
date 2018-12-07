@@ -19,7 +19,7 @@
           </label>
         </div>
         <br>
-        <button *ngIf="'#usr.vlaue==userData.user_name'||'#pass.value==userData.password'" class="btn btn-lg btn-primary btn-block" type="submit" (click)="logInAdmin(usr.value,pass.value)">Sign in</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="logInAdmin(usr.value,pass.value)">Sign in</button>
         <div *ngIf="errorMessage"><span style="color:red">*{{errorMessage}}</span></div>
       </form>
     </div>

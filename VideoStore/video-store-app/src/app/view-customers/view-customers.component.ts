@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomerService } from '../customer.service';
+import { DataService } from '../data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-view-customers',
@@ -10,7 +12,7 @@ export class ViewCustomersComponent implements OnInit {
 
   users$ = [];
   public searchInput = "";
-  constructor(private custData: CustomerService) { }
+  constructor(private custData: CustomerService, private data: DataService, private router: Router) { }
 
   get getUsers() {
     if (this.searchInput.length > 0) {
@@ -31,6 +33,15 @@ export class ViewCustomersComponent implements OnInit {
        }
       )
    };
+
+
+   logOut(){
+    if(confirm("Are you sure")){
+      this.data.logUserIn(false).then((success) => {
+        this.router.navigate(['/admin'])
+      })
+    }
+  }
 
    deleteCustomer(custId){
     if(confirm("Are you Sure you want to delete"))
