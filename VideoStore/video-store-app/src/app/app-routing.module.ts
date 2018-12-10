@@ -9,6 +9,7 @@ import { UpdateMovieComponent } from './update-movie/update-movie.component';
 import { ViewCustomersComponent } from './view-customers/view-customers.component';
 import { AddCustomerComponent } from './add-customer/add-customer.component';
 import { UpdateCustomerComponent } from './update-customer/update-customer.component';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 
 const routes: Routes = [
@@ -56,6 +57,10 @@ const routes: Routes = [
   {
     path: 'updatecustomer/:id',
     component: UpdateCustomerComponent
+  },
+  {
+    path: 'aboutus',
+    component: AboutUsComponent
   }
   
 ];
