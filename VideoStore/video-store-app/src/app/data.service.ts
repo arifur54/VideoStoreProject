@@ -55,6 +55,7 @@ export class DataService {
     return this.http.delete('http://localhost:3000/api/deletemovie/'+vidId).pipe(
       catchError(this.errorHandler)
     );
+    
   }
 
   updateVideo(Movies) {

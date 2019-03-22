@@ -10,7 +10,7 @@ import { ViewCustomersComponent } from './view-customers/view-customers.componen
 import { AddCustomerComponent } from './add-customer/add-customer.component';
 import { UpdateCustomerComponent } from './update-customer/update-customer.component';
 import { AboutUsComponent } from './about-us/about-us.component';
-
+import { PageErrorComponent } from './page-error/page-error.component';
 
 const routes: Routes = [
   {
@@ -61,6 +61,10 @@ const routes: Routes = [
   {
     path: 'aboutus',
     component: AboutUsComponent
+  },
+  {
+    path:'**',
+    component: PageErrorComponent
   }
   
 ];

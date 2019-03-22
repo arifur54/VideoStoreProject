@@ -16,6 +16,7 @@ import { ViewCustomersComponent } from './view-customers/view-customers.componen
 import { AddCustomerComponent } from './add-customer/add-customer.component';
 import { UpdateCustomerComponent } from './update-customer/update-customer.component';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { PageErrorComponent } from './page-error/page-error.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { AboutUsComponent } from './about-us/about-us.component';
     ViewCustomersComponent,
     AddCustomerComponent,
     UpdateCustomerComponent,
-    AboutUsComponent
+    AboutUsComponent,
+    PageErrorComponent
   ],
   imports: [
     BrowserModule,
